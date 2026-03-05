@@ -1,4 +1,4 @@
-# wgbs_growell_dmr_analysis
+# Differential DNA Methylation Analysis in the GROWell Cohort Using WGBS
 
 This repository contains the analysis pipeline for identifying differentially methylated regions (DMRs) from whole-genome bisulfite sequencing (WGBS) data generated in the GROWell study. The workflow processes methylation data from dried blood spot samples and performs region-level differential methylation analysis using DMRichR, integrating covariates and phenotype metadata to investigate associations between DNA methylation patterns and pregnancy-related outcomes. The pipeline includes steps for data preprocessing, CpG filtering, DMR detection, annotation, and downstream visualization to support reproducible epigenomic analysis within the GROWell cohort.
 
