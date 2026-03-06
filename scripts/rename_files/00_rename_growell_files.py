@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # this script will help rename some of my cytosine report
 # Usage
-# ./rename_growell_files.py \
-#   --xlsx /path/to/your_mapping.xlsx \
-#   --dir  /path/to/your_files_directory \
-#   --dry-run \
-#   --log  rename_changes.dryrun.log
+# ./00_rename_growell_files.py \
+#   --xlsx /quobyte/lasallegrp/projects/wgbs_growell_dmr_analysis/metadata/Sample_names_GROWELL.xlsx \
+#   --dir /quobyte/lasallegrp/projects/wgbs_growell_dmr_analysis/data/processed/08_cytosine_reports \
+#   --dry-run
 
 # === DRY RUN ===
 # Excel: /path/to/your_mapping.xlsx
@@ -26,7 +25,10 @@ import pandas as pd
 
 def load_mapping(xlsx_path: Path, sheet: str | None) -> dict[str, str]:
     # Read Excel (requires openpyxl, which you already have in your environment)
-    df = pd.read_excel(xlsx_path, sheet_name=sheet)
+    if sheet:
+        df = pd.read_excel(xlsx_path, sheet_name=sheet)
+    else:
+        df = pd.read_excel(xlsx_path)   # automatically reads first sheet
 
     required = {"Samples_Name_on_Tube", "Unique_Aliquot_ID"}
     missing = required - set(df.columns)
